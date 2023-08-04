@@ -1,7 +1,7 @@
 [build]
   functions = "functions"
   # This will be run the site build
-  command = "CI= npm run build"
+  command = "NODE_OPTIONS=--openssl-legacy-provider CI= npm run build"
   # This is the directory is publishing to netlify's CDN
   publish = "build"
 

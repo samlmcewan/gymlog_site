@@ -1,0 +1,38 @@
+Create exercise popout 
+    -fill in fields
+    -submit which adds to all exercises
+
+All exercises popout 
+    -lists all exercises
+    -search function
+    -edit exercise, adding tags will add to workout on workouts page
+
+workout page (home)
+
+workout type select (tags, showOnWorkoutPage = true)
+    -push 
+    -pull
+    -legs
+
+
+            (gets exercises by tag, and showOnWorkoutPage is true)
+            
+            -remove exercise from workout function (by clicking showOnWorkoutPage button)
+            -search exercises by name of tag
+
+                push inner workout page [
+                    {exercise obj},
+                    {exercise obj}
+                ]
+                    exercise object (can update title, sets, reps, weight, rest, oneRepPR, showOnWorkoutPage)
+                    {
+                        id: 123,
+                        title: 'Dumbell bicep curl',
+                        tags: [pull, upperBody],
+                        sets: 3,
+                        reps: 10,
+                        weight: 12kg
+                        restBetweenSets: 01:30
+                        oneRepPR: 16kg, 
+                        showOnWorkoutPage: true
+                    }

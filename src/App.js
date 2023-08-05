@@ -189,6 +189,38 @@ export default class App extends Component {
       })
     }
   }
+  updateExerciseWeight = (event, currentValue) => {
+    let isDifferent = false
+    const exerciseId = event.target.dataset.key
+
+    const updatedExercises = this.state.exercises.map((exercise, i) => {
+      const id = getExerciseId(exercise)
+      if (id === exerciseId && exercise.data.weight !== currentValue) {
+        exercise.data.weight = currentValue
+        isDifferent = true
+      }
+      return exercise
+    })
+
+    // only set state if input different
+    if (isDifferent) {
+      this.setState({
+        exercises: updatedExercises
+      }, () => {
+        api.update(exerciseId, {
+          title: currentValue
+        }).then(() => {
+          console.log(`update exercise ${exerciseId}`, currentValue)
+          analytics.track('exerciseUpdated', {
+            category: 'exercises',
+            label: currentValue
+          })
+        }).catch((e) => {
+          console.log('An API error occurred', e)
+        })
+      })
+    }
+  }
   clearCompleted = () => {
     const { exercises } = this.state
 
@@ -293,6 +325,15 @@ export default class App extends Component {
                 editKey={id}
                 onBlur={this.updateExerciseTitle} // save on enter/blur
                 html={data.title}
+                // onChange={this.handleDataChange} // save on change
+              />
+            </div>
+            <div className='exercise-list-title'>
+              <ContentEditable
+                tagName='span'
+                editKey={id}
+                onBlur={this.updateExerciseWeight} // save on enter/blur
+                html={data.weight}
                 // onChange={this.handleDataChange} // save on change
               />
             </div>

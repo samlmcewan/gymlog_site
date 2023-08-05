@@ -40,7 +40,7 @@ export default class App extends Component {
     e.preventDefault()
     const { exercises } = this.state
     const exerciseValue = this.inputElement.value
-    const exerciseWeight =  this.inputElement.value
+    const exerciseWeight =  this.weightInputElement.value
 
     if (!exerciseValue) {
       alert('Please add exercise title')
@@ -50,6 +50,7 @@ export default class App extends Component {
 
     // reset input to empty
     this.inputElement.value = ''
+    this.weightInputElement.value = ''
 
     const exerciseInfo = {
       title: exerciseValue,
@@ -369,7 +370,7 @@ export default class App extends Component {
               className='exercise-create-input'
               placeholder='Weight (kg)'
               name='weight'
-              ref={el => this.inputElement = el}
+              ref={el => this.weightInputElement = el}
               autoComplete='off'
               style={{marginRight: 20}}
             />

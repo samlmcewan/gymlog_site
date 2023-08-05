@@ -32,7 +32,7 @@ const deleteExercise = (exerciseId) => {
   })
 }
 
-const batchDeleteexercise = (exerciseIds) => {
+const batchDeleteExercise = (exerciseIds) => {
   return fetch(`/.netlify/functions/exercises-delete-batch`, {
     body: JSON.stringify({
       ids: exerciseIds

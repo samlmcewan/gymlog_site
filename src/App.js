@@ -11,7 +11,7 @@ import './App.css'
 
 export default class App extends Component {
   state = {
-    todos: [],
+    exercises: [],
     showMenu: false
   }
   componentDidMount() {
@@ -19,9 +19,9 @@ export default class App extends Component {
     /* Track a page view */
     analytics.page()
 
-    // Fetch all todos
-    api.readAll().then((todos) => {
-      if (todos.message === 'unauthorized') {
+    // Fetch all exercises
+    api.readAll().then((exercises) => {
+      if (exercises.message === 'unauthorized') {
         if (isLocalHost()) {
           alert('FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info')
         } else {
@@ -30,19 +30,19 @@ export default class App extends Component {
         return false
       }
 
-      console.log('all todos', todos)
+      console.log('all exercises', exercises)
       this.setState({
-        todos: todos
+        exercises: exercises
       })
     })
   }
-  saveTodo = (e) => {
+  saveExercise = (e) => {
     e.preventDefault()
-    const { todos } = this.state
-    const todoValue = this.inputElement.value
+    const { exercises } = this.state
+    const exerciseValue = this.inputElement.value
 
-    if (!todoValue) {
-      alert('Please add Todo title')
+    if (!exerciseValue) {
+      alert('Please add exercise title')
       this.inputElement.focus()
       return false
     }
@@ -50,137 +50,137 @@ export default class App extends Component {
     // reset input to empty
     this.inputElement.value = ''
 
-    const todoInfo = {
-      title: todoValue,
+    const exerciseInfo = {
+      title: exerciseValue,
       completed: false,
     }
-    // Optimistically add todo to UI
-    const newTodoArray = [{
-      data: todoInfo,
+    // Optimistically add exercise to UI
+    const newExerciseArray = [{
+      data: exerciseInfo,
       ts: new Date().getTime() * 10000
     }]
 
-    const optimisticTodoState = newTodoArray.concat(todos)
+    const optimisticExerciseState = newExerciseArray.concat(exercises)
 
     this.setState({
-      todos: optimisticTodoState
+      exercises: optimisticExerciseState
     })
     // Make API request to create new todo
-    api.create(todoInfo).then((response) => {
+    api.create(exerciseInfo).then((response) => {
       console.log(response)
       /* Track a custom event */
-      analytics.track('todoCreated', {
-        category: 'todos',
-        label: todoValue,
+      analytics.track('exerciseCreated', {
+        category: 'exercises',
+        label: exerciseValue,
       })
       // remove temporaryValue from state and persist API response
-      const persistedState = removeOptimisticTodo(todos).concat(response)
+      const persistedState = removeOptimisticExercise(exercises).concat(response)
       // Set persisted value to state
       this.setState({
-        todos: persistedState
+        exercises: persistedState
       })
     }).catch((e) => {
       console.log('An API error occurred', e)
-      const revertedState = removeOptimisticTodo(todos)
+      const revertedState = removeOptimisticExercise(exercises)
       // Reset to original state
       this.setState({
-        todos: revertedState
+        exercises: revertedState
       })
     })
   }
-  deleteTodo = (e) => {
-    const { todos } = this.state
-    const todoId = e.target.dataset.id
+  deleteExercise = (e) => {
+    const { exercises } = this.state
+    const exerciseId = e.target.dataset.id
 
-    // Optimistically remove todo from UI
-    const filteredTodos = todos.reduce((acc, current) => {
-      const currentId = getTodoId(current)
-      if (currentId === todoId) {
+    // Optimistically remove exercise from UI
+    const filteredExercises = exercises.reduce((acc, current) => {
+      const currentId = getExerciseId(current)
+      if (currentId === exerciseId) {
         // save item being removed for rollback
-        acc.rollbackTodo = current
+        acc.rollbackExercise = current
         return acc
       }
-      // filter deleted todo out of the todos list
+      // filter deleted exercise out of the exercises list
       acc.optimisticState = acc.optimisticState.concat(current)
       return acc
     }, {
-      rollbackTodo: {},
+      rollbackExercise: {},
       optimisticState: []
     })
 
     this.setState({
-      todos: filteredTodos.optimisticState
+      exercises: filteredExercises.optimisticState
     })
 
-    // Make API request to delete todo
-    api.delete(todoId).then(() => {
-      console.log(`deleted todo id ${todoId}`)
-      analytics.track('todoDeleted', {
-        category: 'todos',
+    // Make API request to delete exercise
+    api.delete(exerciseId).then(() => {
+      console.log(`deleted exercise id ${exerciseId}`)
+      analytics.track('exerciseDeleted', {
+        category: 'exercises',
       })
     }).catch((e) => {
-      console.log(`There was an error removing ${todoId}`, e)
+      console.log(`There was an error removing ${exerciseId}`, e)
       // Add item removed back to list
       this.setState({
-        todos: filteredTodos.optimisticState.concat(filteredTodos.rollbackTodo)
+        exercises: filteredExercises.optimisticState.concat(filteredExercises.rollbackExercise)
       })
     })
   }
-  handleTodoCheckbox = (event) => {
-    const { todos } = this.state
+  handleExerciseCheckbox = (event) => {
+    const { exercises } = this.state
     const { target } = event
-    const todoCompleted = target.checked
-    const todoId = target.dataset.id
+    const exerciseCompleted = target.checked
+    const exerciseId = target.dataset.id
 
-    const updatedTodos = todos.map((todo, i) => {
-      const { data } = todo
-      const id = getTodoId(todo)
-      if (id === todoId && data.completed !== todoCompleted) {
-        data.completed = todoCompleted
+    const updatedExercises = exercises.map((exercise, i) => {
+      const { data } = exercise
+      const id = getExerciseId(exercise)
+      if (id === exerciseId && data.completed !== exerciseCompleted) {
+        data.completed = exerciseCompleted
       }
-      return todo
+      return exercise
     })
 
     this.setState({
-      todos: updatedTodos
+      exercises: updatedExercises
     }, () => {
-      api.update(todoId, {
-        completed: todoCompleted
+      api.update(exerciseId, {
+        completed: exerciseCompleted
       }).then(() => {
-        console.log(`update todo ${todoId}`, todoCompleted)
-        const eventName = (todoCompleted) ? 'todoCompleted' : 'todoUnfinished'
+        console.log(`update exercise ${exerciseId}`, exerciseCompleted)
+        const eventName = (exerciseCompleted) ? 'exerciseCompleted' : 'exerciseUnfinished'
         analytics.track(eventName, {
-          category: 'todos'
+          category: 'exercises'
         })
       }).catch((e) => {
         console.log('An API error occurred', e)
       })
     })
   }
-  updateTodoTitle = (event, currentValue) => {
+  updateExerciseTitle = (event, currentValue) => {
     let isDifferent = false
-    const todoId = event.target.dataset.key
+    const exerciseId = event.target.dataset.key
 
-    const updatedTodos = this.state.todos.map((todo, i) => {
-      const id = getTodoId(todo)
-      if (id === todoId && todo.data.title !== currentValue) {
-        todo.data.title = currentValue
+    const updatedExercises = this.state.exercises.map((exercise, i) => {
+      const id = getExerciseId(exercise)
+      if (id === exerciseId && exercise.data.title !== currentValue) {
+        exercise.data.title = currentValue
         isDifferent = true
       }
-      return todo
+      return exercise
     })
 
     // only set state if input different
     if (isDifferent) {
       this.setState({
-        todos: updatedTodos
+        exercises: updatedExercises
       }, () => {
-        api.update(todoId, {
+        api.update(exerciseId, {
           title: currentValue
         }).then(() => {
-          console.log(`update todo ${todoId}`, currentValue)
-          analytics.track('todoUpdated', {
-            category: 'todos',
+          console.log(`update exercise ${exerciseId}`, currentValue)
+          analytics.track('exerciseUpdated', {
+            category: 'exercises',
             label: currentValue
           })
         }).catch((e) => {
@@ -190,41 +190,41 @@ export default class App extends Component {
     }
   }
   clearCompleted = () => {
-    const { todos } = this.state
+    const { exercises } = this.state
 
-    // Optimistically remove todos from UI
-    const data = todos.reduce((acc, current) => {
+    // Optimistically remove exercises from UI
+    const data = exercises.reduce((acc, current) => {
       if (current.data.completed) {
         // save item being removed for rollback
-        acc.completedTodoIds = acc.completedTodoIds.concat(getTodoId(current))
+        acc.completedExerciseIds = acc.completedExerciseIds.concat(getExerciseId(current))
         return acc
       }
-      // filter deleted todo out of the todos list
+      // filter deleted exercise out of the exercises list
       acc.optimisticState = acc.optimisticState.concat(current)
       return acc
     }, {
-      completedTodoIds: [],
+      completedExerciseIds: [],
       optimisticState: []
     })
 
-    // only set state if completed todos exist
-    if (!data.completedTodoIds.length) {
-      alert('Please check off some todos to batch remove them')
+    // only set state if completed exercises exist
+    if (!data.completedExerciseIds.length) {
+      alert('Please check off some exercises to batch remove them')
       this.closeModal()
       return false
     }
 
     this.setState({
-      todos: data.optimisticState
+      exercises: data.optimisticState
     }, () => {
       setTimeout(() => {
         this.closeModal()
       }, 600)
 
-      api.batchDelete(data.completedTodoIds).then(() => {
-        console.log(`Batch removal complete`, data.completedTodoIds)
-        analytics.track('todosBatchDeleted', {
-          category: 'todos',
+      api.batchDelete(data.completedExerciseIds).then(() => {
+        console.log(`Batch removal complete`, data.completedExerciseIds)
+        analytics.track('exercisesBatchDeleted', {
+          category: 'exercises',
         })
       }).catch((e) => {
         console.log('An API error occurred', e)
@@ -247,10 +247,10 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  renderTodos() {
-    const { todos } = this.state
+  renderExercises() {
+    const { exercises } = this.state
 
-    if (!todos || !todos.length) {
+    if (!exercises || !exercises.length) {
       // Loading State here
       return null
     }
@@ -258,40 +258,40 @@ export default class App extends Component {
     const timeStampKey = 'ts'
     const orderBy = 'desc' // or `asc`
     const sortOrder = sortByDate(timeStampKey, orderBy)
-    const todosByDate = todos.sort(sortOrder)
+    const exercisesByDate = exercises.sort(sortOrder)
 
-    return todosByDate.map((todo, i) => {
-      const { data, ref } = todo
-      const id = getTodoId(todo)
+    return exercisesByDate.map((exercise, i) => {
+      const { data, ref } = exercise
+      const id = getExerciseId(exercise)
       // only show delete button after create API response returns
       let deleteButton
       if (ref) {
         deleteButton = (
-          <button data-id={id} onClick={this.deleteTodo}>
+          <button data-id={id} onClick={this.deleteExercise}>
             delete
           </button>
         )
       }
-      const boxIcon = (data.completed) ? '#todo__box__done' : '#todo__box'
+      const boxIcon = (data.completed) ? '#exercise__box__done' : '#exercise__box'
       return (
-        <div key={i} className='todo-item'>
-          <label className="todo">
+        <div key={i} className='exercise-item'>
+          <label className="exercise">
             <input
               data-id={id}
-              className="todo__state"
+              className="exercise__state"
               type="checkbox"
-              onChange={this.handleTodoCheckbox}
+              onChange={this.handleExerciseCheckbox}
               checked={data.completed}
             />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 25" className="todo__icon">
-              <use xlinkHref={`${boxIcon}`} className="todo__box"></use>
-              <use xlinkHref="#todo__check" className="todo__check"></use>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 25" className="exercise__icon">
+              <use xlinkHref={`${boxIcon}`} className="exercise__box"></use>
+              <use xlinkHref="#exercise__check" className="exercise__check"></use>
             </svg>
-            <div className='todo-list-title'>
+            <div className='exercise-list-title'>
               <ContentEditable
                 tagName='span'
                 editKey={id}
-                onBlur={this.updateTodoTitle} // save on enter/blur
+                onBlur={this.updateExerciseTitle} // save on enter/blur
                 html={data.title}
                 // onChange={this.handleDataChange} // save on change
               />
@@ -308,29 +308,29 @@ export default class App extends Component {
 
         <AppHeader />
 
-        <div className='todo-list'>
+        <div className='exercise-list'>
           <h2>
-            Create todo
+            Create exercise
             <SettingsIcon onClick={this.openModal} className='mobile-toggle' />
           </h2>
-          <form className='todo-create-wrapper' onSubmit={this.saveTodo}>
+          <form className='exercise-create-wrapper' onSubmit={this.saveExercise}>
             <input
-              className='todo-create-input'
-              placeholder='Add a todo item'
+              className='exercise-create-input'
+              placeholder='Add a exercise item'
               name='name'
               ref={el => this.inputElement = el}
               autoComplete='off'
               style={{marginRight: 20}}
             />
-            <div className='todo-actions'>
-              <button className='todo-create-button'>
-                Create todo
+            <div className='exercise-actions'>
+              <button className='exercise-create-button'>
+                Create exercise
               </button>
               <SettingsIcon onClick={this.openModal}  className='desktop-toggle' />
             </div>
           </form>
 
-          {this.renderTodos()}
+          {this.renderExercises()}
         </div>
         <SettingsMenu
           showMenu={this.state.showMenu}
@@ -342,16 +342,16 @@ export default class App extends Component {
   }
 }
 
-function removeOptimisticTodo(todos) {
-  // return all 'real' todos
-  return todos.filter((todo) => {
-    return todo.ref
+function removeOptimisticExercise(exercises) {
+  // return all 'real' exercises
+  return exercises.filter((exercise) => {
+    return exercise.ref
   })
 }
 
-function getTodoId(todo) {
-  if (!todo.ref) {
+function getExerciseId(exercise) {
+  if (!exercise.ref) {
     return null
   }
-  return todo.ref['@ref'].id
+  return exercise.ref['@ref'].id
 }

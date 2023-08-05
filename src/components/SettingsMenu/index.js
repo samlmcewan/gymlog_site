@@ -17,7 +17,7 @@ export default class Menu extends Component {
   }
   handleDelete = (e) => {
     e.preventDefault()
-    const deleteConfirm = window.confirm("Are you sure you want to clear all completed todos?");
+    const deleteConfirm = window.confirm("Are you sure you want to clear all completed exercises?");
     if (deleteConfirm) {
       console.log('delete')
       this.props.handleClearCompleted()
@@ -35,11 +35,11 @@ export default class Menu extends Component {
           <h2>Settings</h2>
           <div className='settings-section' onClick={this.handleDelete}>
             <button className='btn-danger'>
-              Clear All Completed Todos
+              Clear All Completed Exercises
             </button>
           </div>
           <div className='settings-section' style={{display: 'none'}}>
-            <div className='settings-header'>Sort Todos:</div>
+            <div className='settings-header'>Sort Exercises:</div>
             <div className='settings-options-wrapper' data-setting='sortOrder'>
               <div
                 className='settings-option'

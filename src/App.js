@@ -39,8 +39,8 @@ export default class App extends Component {
   saveExercise = (e) => {
     e.preventDefault()
     const { exercises } = this.state
-    const exerciseValue = this.inputElement[0].value
-    const exerciseWeight =  this.inputElement[1].value
+    const exerciseValue = this.inputElement.value
+    const exerciseWeight =  this.inputElement.value
 
     if (!exerciseValue) {
       alert('Please add exercise title')

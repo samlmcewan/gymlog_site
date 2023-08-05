@@ -1,24 +1,24 @@
-.todo-list {
+.exercise-list {
   padding: 60px;
   padding-top: 10px;
   width: 600px;
 }
-.todo-settings-toggle {
+.exercise-settings-toggle {
   fill: #b7b9bd;
   width: 25px;
   margin-left: 10px;
   cursor: pointer;
 }
-.todo-create-wrapper {
+.exercise-create-wrapper {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
-.todo-actions {
+.exercise-actions {
   display: flex;
   align-items: center;
 }
-.todo-create-input {
+.exercise-create-input {
   font-size: 14px;
   padding: 11px 15px;
   min-width: 300px;
@@ -28,19 +28,19 @@
   outline: none;
   transition: all 0.3s ease;
 }
-.todo-create-input:hover, .todo-create-input:active, .todo-create-input:focus {
+.exercise-create-input:hover, .exercise-create-input:active, .exercise-create-input:focus {
   box-shadow: 0px 0px 0px 2px rgb(43, 190, 185);
   box-shadow: 0px 0px 0px 2px #00ad9f;
 }
 
-.todo-item {
+.exercise-item {
   padding: 15px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 43px;
 }
-.todo-list-title {
+.exercise-list-title {
   font-size: 17px;
   font-weight: 500;
   color: #5a5a5a;
@@ -50,7 +50,7 @@
   margin-left: 45px;
   width: 470px;
 }
-.todo-list-title:hover span[contenteditable="false"]:before {
+.exercise-list-title:hover span[contenteditable="false"]:before {
   content: 'click to edit';
   position: absolute;
   top: -6px;
@@ -75,30 +75,30 @@
   .desktop-toggle {
     display: none;
   }
-  .todo-list {
+  .exercise-list {
     padding: 15px;
     padding-top: 10px;
     width: auto;
   }
-  .todo-list h2 {
+  .exercise-list h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     max-width: 95%;
   }
-  .todo-list-title {
+  .exercise-list-title {
     /* Disable Auto Zoom in Input “Text” tag - Safari on iPhone */
     font-size: 16px;
     max-width: 80%;
     margin-left: 40px;
   }
-  .todo-create-wrapper {
+  .exercise-create-wrapper {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 15px;
   }
-  .todo-create-input {
+  .exercise-create-input {
     appearance: none;
     border: 1px solid rgba(120, 130, 152, 0.25);
     /* Disable Auto Zoom in Input “Text” tag - Safari on iPhone */
@@ -106,7 +106,7 @@
     margin-bottom: 15px;
     min-width: 85%;
   }
-  .todo-item button {
+  .exercise-item button {
     padding: 4px 12px;
     font-size: 14px;
     margin-bottom: 0px;
@@ -115,10 +115,10 @@
     align-items: center;
     justify-content: center;
   }
-  .todo-list-title:hover span[contenteditable="false"]:before {
+  .exercise-list-title:hover span[contenteditable="false"]:before {
     content: ''
   }
-  .todo-list-title:hover span[contenteditable="true"]:before {
+  .exercise-list-title:hover span[contenteditable="true"]:before {
     content: 'click to edit';
     position: absolute;
     top: -20px;
@@ -130,8 +130,8 @@
   }
 }
 
-/** todo css via https://codepen.io/shshaw/pen/WXMdwE 😻 */
-.todo {
+/** exercise css via https://codepen.io/shshaw/pen/WXMdwE 😻 */
+.exercise {
   display: inline-block;
   position: relative;
   padding: 0;
@@ -141,14 +141,14 @@
   cursor: pointer;
   padding-right: 5px;
 }
-.todo__state {
+.exercise__state {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
 }
 
-.todo__icon {
+.exercise__icon {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -164,23 +164,23 @@
   z-index: 1;
 }
 
-.todo__state:checked ~ .todo-list-title {
+.exercise__state:checked ~ .exercise-list-title {
   text-decoration: line-through;
 }
 
-.todo__box {
+.exercise__box {
   stroke-dasharray: 56.1053, 56.1053;
   stroke-dashoffset: 0;
   transition-delay: 0.16s;
 }
-.todo__check {
+.exercise__check {
   stroke: #27FDC7;
   stroke-dasharray: 9.8995, 9.8995;
   stroke-dashoffset: 9.8995;
   transition-duration: 0.25s;
 }
 
-.todo__state:checked ~ .todo__icon .todo__box {
+.exercise__state:checked ~ .exercise__icon .exercise__box {
   stroke-dashoffset: 56.1053;
   transition-delay: 0s;
   stroke-dasharray: 56.1053, 56.1053;
@@ -188,7 +188,7 @@
   stroke: red;
 }
 
-.todo__state:checked ~ .todo__icon .todo__check {
+.exercise__state:checked ~ .exercise__icon .exercise__check {
   stroke-dashoffset: 0;
   transition-delay: 0s;
 }

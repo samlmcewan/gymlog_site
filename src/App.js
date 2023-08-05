@@ -316,8 +316,16 @@ export default class App extends Component {
           <form className='exercise-create-wrapper' onSubmit={this.saveExercise}>
             <input
               className='exercise-create-input'
-              placeholder='Add an exercise item'
+              placeholder='Exercise name'
               name='name'
+              ref={el => this.inputElement = el}
+              autoComplete='off'
+              style={{marginRight: 20}}
+            />
+            <input
+              className='exercise-create-input'
+              placeholder='Weight (kg)'
+              name='weight'
               ref={el => this.inputElement = el}
               autoComplete='off'
               style={{marginRight: 20}}

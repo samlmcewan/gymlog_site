@@ -13,10 +13,13 @@ export default class App extends Component {
   state = {
     exercises: [],
     showMenu: false,
-    exerciseCategory: ''
+    exerciseCategory: useState('')
+    
   }
+  
   componentDidMount() {
 
+    // const [firstName, setFirstName] = useState('');
     /* Track a page view */
     analytics.page()
 
@@ -319,15 +322,10 @@ export default class App extends Component {
     })
   }
   
-  resetStateCat = () => {
-    this.setState({exerciseCategory: ''})
-  }
- updateCategory = (e) => {
-  e.preventDefault()
-   // wipe if already seleced 
-  resetStateCat()
-  this.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
- }
+//  updateCategory = (e) => {
+//   e.preventDefault()
+//   this.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
+//  }
   renderExercises = () => {
    const exerciseListCategory = this.state.exerciseCategory
     const { exercises } = this.state
@@ -464,7 +462,7 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.updateCategory} 
+              onChange={e => setCatStatethis.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)})} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}

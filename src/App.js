@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { useState } from "react";
+// import { useState } from "react";
 import ContentEditable from './components/ContentEditable'
 import AppHeader from './components/AppHeader'
 import SettingsMenu from './components/SettingsMenu'
@@ -417,7 +417,7 @@ export default class App extends Component {
     })
   }
   render() {
-    const [selectedCat, setSelectedCat] = useState('')
+    const [selectedCat, setSelectedCat] = this.state
     return (
       <div className='app'>
 

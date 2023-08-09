@@ -414,12 +414,17 @@ export default class App extends Component {
           {deleteButton}
         </div>
       )
+      
     })
+ 
+  }
+  resetState = () => {
+    {this.setState({exerciseCategory: ''})}
   }
   render() {
     // const [selectedCat, setSelectedCat] = useState('')
     // const [selectedCat, setSelectedCat] = () => { useState('')}
-    const selectedCat = this.state
+    const selectedCat = this.state.exerciseCategory
     const setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
     return (
       <div className='app'>
@@ -483,7 +488,8 @@ export default class App extends Component {
 
 
           {this.renderExercises(selectedCat)}
-          {this.setState({exerciseCategory: ''})}
+          {this.resetState()}
+          
         </div>
         <SettingsMenu
           showMenu={this.state.showMenu}

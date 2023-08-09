@@ -318,7 +318,7 @@ export default class App extends Component {
     })
   }
   updateCategory = (e) => {
-    exercise-item
+    console.log(e.target.value)
   }
   renderExercises = () => {
    

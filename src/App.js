@@ -418,9 +418,9 @@ export default class App extends Component {
   }
   render() {
     // const [selectedCat, setSelectedCat] = useState('')
-    const [selectedCat, setSelectedCat] = () => { useState('')}
-    // const selectedCat = this.state
-    // const setSelectedCat = () => 
+    // const [selectedCat, setSelectedCat] = () => { useState('')}
+    const selectedCat = this.state
+    const setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
     return (
       <div className='app'>
 
@@ -483,6 +483,7 @@ export default class App extends Component {
 
 
           {this.renderExercises(selectedCat)}
+          {this.setState({exerciseCategory: ''})}
         </div>
         <SettingsMenu
           showMenu={this.state.showMenu}

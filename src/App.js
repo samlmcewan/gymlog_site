@@ -12,7 +12,8 @@ import './App.css'
 export default class App extends Component {
   state = {
     exercises: [],
-    showMenu: false
+    showMenu: false,
+    listCat: 'push'
   }
   componentDidMount() {
 
@@ -317,19 +318,15 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  renderExercises = (e) => {
+  updateCategory = (e) => {
+    this.setState({
+      exercises: e.target.value
+    })
+  }
+  renderExercises = () => {
    
     const { exercises } = this.state
-    // let exerciseListCategory = 'push'
-    // if(event !== undefined) {
-    //   exerciseListCategory = event.target.value
-
-    // }
-    // const exerciseListCategory =  event.target.value
-    let exerciseListCategory = ''
-    if(this.exerciseCatSelect.value !== undefined) {
-      exerciseListCategory = this.exerciseCatSelect.value
-    }
+    const exerciseListCategory = this.state
 
     if (!exercises || !exercises.length) {
       // Loading State here
@@ -457,12 +454,12 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.renderExercises} 
+              onChange={this.updateCategory} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}
               defaultValue="push"
-              ref={el => this.exerciseCatSelect = el}
+              
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>

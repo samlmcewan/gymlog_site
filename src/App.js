@@ -318,7 +318,7 @@ export default class App extends Component {
     })
   }
   renderExercises = (e) => {
-    e.preventDefault()
+   
     const { exercises } = this.state
     // let exerciseListCategory = 'push'
     // if(event !== undefined) {

@@ -1,7 +1,14 @@
 body {
   background-color: #353a3e;
+  color: #ffffff;
 }
 
+.show {
+  display: flex;
+}
+.hide {
+  display: none;
+}
 .exercise-list {
   padding: 60px;
   padding-top: 10px;

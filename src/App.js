@@ -319,7 +319,7 @@ export default class App extends Component {
   }
   renderExercises() {
     const { exercises } = this.state
-
+    const exerciseListCategory = this.exerciseListCategory.value
     if (!exercises || !exercises.length) {
       // Loading State here
       return null
@@ -342,9 +342,16 @@ export default class App extends Component {
           </button>
         )
       }
+      // Set the display class to only show exercises from the selected category 
+      const displayClassName = "";
+      if (data.cat = exerciseListCategory) {
+          displayClassName = "exercise-item show";
+      } else {
+        displayClassName = "exercise-item hide";
+      }
       const boxIcon = (data.completed) ? '#exercise__box__done' : '#exercise__box'
       return (
-        <div key={i} className='exercise-item'>
+        <div key={i} className={displayClassName}>
           <label className="exercise">
             <input
               data-id={id}
@@ -436,6 +443,18 @@ export default class App extends Component {
               <SettingsIcon onClick={this.openModal}  className='desktop-toggle' />
             </div>
           </form>
+
+          <select 
+              id="catList" 
+              name="catList"
+              ref={el => this.exerciseListCategory = el}
+              style={{marginRight: 20}}
+              >
+              <option value="push">Push</option>
+              <option value="pull">Pull</option>
+              <option value="legs">Legs</option>
+            </select>
+
 
           {this.renderExercises()}
         </div>

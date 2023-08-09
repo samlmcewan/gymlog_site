@@ -465,7 +465,7 @@ export default class App extends Component {
               name="catList"
               style={{marginRight: 20}}
               defaultValue="push"
-              
+              value={this.state.exerciseCategory}
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>

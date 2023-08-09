@@ -421,11 +421,12 @@ export default class App extends Component {
   resetState = () => {
     {this.setState({exerciseCategory: ''})}
   }
+  setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
   render() {
     // const [selectedCat, setSelectedCat] = useState('')
     // const [selectedCat, setSelectedCat] = () => { useState('')}
     const selectedCat = this.state.exerciseCategory
-    const setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
+    
     return (
       <div className='app'>
 
@@ -474,7 +475,7 @@ export default class App extends Component {
 
          
           <select
-              onChange={e => setSelectedCat(e.target.value)} 
+              onChange={e => this.setSelectedCat(e.target.value)} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}
@@ -488,7 +489,7 @@ export default class App extends Component {
 
 
           {this.renderExercises(selectedCat)}
-          {this.resetState()}
+          
           
         </div>
         <SettingsMenu

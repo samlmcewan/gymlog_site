@@ -320,7 +320,7 @@ export default class App extends Component {
   }
  updateCategory = (e) => {
   e.preventDefault()
-  this.setState({exerciseCategory: e.toString()});
+  this.setState({exerciseCategory: e.target.value});
   console.log(e)
   console.log('state' + this.state.exerciseCategory)
  }

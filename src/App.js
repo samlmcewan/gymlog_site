@@ -319,7 +319,7 @@ export default class App extends Component {
     })
   }
  updateCategory = (e) => {
-  e.preventDefault
+  e.preventDefault()
   this.setState({exerciseCategory: e});
   console.log(e)
  }

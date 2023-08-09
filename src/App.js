@@ -371,7 +371,7 @@ export default class App extends Component {
                 tagName='span'
                 editKey={id}
                 onBlur={this.updateExerciseWeight} // save on enter/blur
-                html={data.weight}
+                html={data.weight + 'kg'}
                 // onChange={this.handleDataChange} // save on change
               />
             </div>

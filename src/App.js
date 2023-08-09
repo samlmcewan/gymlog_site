@@ -11,16 +11,18 @@ import isLocalHost from './utils/isLocalHost'
 import './App.css'
 
 export default class App extends Component {
+  
   state = {
     exercises: [],
     showMenu: false,
-    exerciseCategory: useState('')
+    exerciseCategory: ''
     
   }
   
+  
   componentDidMount() {
 
-    // const [firstName, setFirstName] = useState('');
+   
     /* Track a page view */
     analytics.page()
 
@@ -323,12 +325,12 @@ export default class App extends Component {
     })
   }
   
- updateCategory = (e) => {
-  e.preventDefault()
-  this.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
- }
-  renderExercises = () => {
-   const exerciseListCategory = this.state.exerciseCategory
+//  updateCategory = (e) => {
+//   e.preventDefault()
+//   this.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
+//  }
+  renderExercises = (c) => {
+   const exerciseListCategory = c
     const { exercises } = this.state
     
 
@@ -415,6 +417,7 @@ export default class App extends Component {
     })
   }
   render() {
+    const [selectedCat, setSelectedCat] = useState('')
     return (
       <div className='app'>
 
@@ -463,12 +466,12 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.updateCategory} 
+              onChange={e => setSelectedCat(e.target.value)} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}
               defaultValue="push"
-              value={this.state.exerciseCategory}
+              value={selectedCat}
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>
@@ -476,7 +479,7 @@ export default class App extends Component {
             </select>
 
 
-          {this.renderExercises()}
+          {this.renderExercises(selectedCat)}
         </div>
         <SettingsMenu
           showMenu={this.state.showMenu}

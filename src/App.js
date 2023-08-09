@@ -318,14 +318,11 @@ export default class App extends Component {
       category: 'modal'
     })
   }
+  
  updateCategory = (e) => {
   e.preventDefault()
   // wipe if already seleced 
-  
-  
-  this.replaceState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
- 
-  
+  App.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
  }
   renderExercises = () => {
    const exerciseListCategory = this.state.exerciseCategory

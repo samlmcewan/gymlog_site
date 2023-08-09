@@ -319,10 +319,14 @@ export default class App extends Component {
     })
   }
   
+  resetStateCat = () => {
+    this.setState({exerciseCategory: ''})
+  }
  updateCategory = (e) => {
   e.preventDefault()
-  // wipe if already seleced 
-  App.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
+   // wipe if already seleced 
+  resetStateCat()
+  this.state.exerciseCategory.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
  }
   renderExercises = () => {
    const exerciseListCategory = this.state.exerciseCategory

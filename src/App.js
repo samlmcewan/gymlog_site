@@ -454,7 +454,7 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.updateCategory()} 
+              onChange={this.renderExercises} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}

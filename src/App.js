@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { useState } from "react";
 import ContentEditable from './components/ContentEditable'
 import AppHeader from './components/AppHeader'
 import SettingsMenu from './components/SettingsMenu'

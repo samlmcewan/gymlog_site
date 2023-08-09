@@ -319,7 +319,7 @@ export default class App extends Component {
   }
   renderExercises(event) {
     const { exercises } = this.state
-    const exerciseListCategory = 'push'
+    let exerciseListCategory = 'push'
     if(event !== undefined) {
       exerciseListCategory = event.target.value
 
@@ -348,7 +348,7 @@ export default class App extends Component {
         )
       }
       // Set the display class to only show exercises from the selected category 
-      const displayClassName = "";
+      let displayClassName = "";
       if (data.cat = exerciseListCategory) {
           displayClassName = "exercise-item show";
       } else {

@@ -322,7 +322,7 @@ export default class App extends Component {
   e.preventDefault()
   this.setState({exerciseCategory: e});
   console.log(e)
-  console.log(this.state.exerciseCategory)
+  console.log('state' + this.state.exerciseCategory)
  }
   renderExercises = () => {
    const exerciseListCategory = this.state.exerciseCategory

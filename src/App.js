@@ -319,7 +319,7 @@ export default class App extends Component {
   }
  
   renderExercises = () => {
-   const exerciseListCategory = this.googleInput._getText()
+   const exerciseListCategory = this.googleInput.value
     const { exercises } = this.state
     
 

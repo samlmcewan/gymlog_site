@@ -320,9 +320,9 @@ export default class App extends Component {
   }
  updateCategory = (e) => {
   e.preventDefault()
-  this.setState({exerciseCategory: e.target.value});
-  console.log(e)
-  console.log('state' + this.state.exerciseCategory)
+  this.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
+ 
+  
  }
   renderExercises = () => {
    const exerciseListCategory = this.state.exerciseCategory

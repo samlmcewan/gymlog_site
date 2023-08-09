@@ -41,6 +41,7 @@ export default class App extends Component {
     const { exercises } = this.state
     const exerciseValue = this.inputElement.value
     const exerciseWeight =  this.weightInputElement.value
+    const exerciseCat = this.catSelectElement.value
 
     if (!exerciseValue) {
       alert('Please add exercise title')
@@ -51,10 +52,12 @@ export default class App extends Component {
     // reset input to empty
     this.inputElement.value = ''
     this.weightInputElement.value = ''
+    this.catSelectElement.value = ''
 
     const exerciseInfo = {
       title: exerciseValue,
       weight: exerciseWeight,
+      cat: exerciseCat,
       completed: false,
     }
     // Optimistically add exercise to UI
@@ -224,6 +227,38 @@ export default class App extends Component {
       })
     }
   }
+  updateExerciseCat = (event, currentValue) => {
+    let isDifferent = false
+    const exerciseId = event.target.dataset.key
+
+    const updatedExercises = this.state.exercises.map((exercise, i) => {
+      const id = getExerciseId(exercise)
+      if (id === exerciseId && exercise.data.cat !== currentValue) {
+        exercise.data.cat = currentValue
+        isDifferent = true
+      }
+      return exercise
+    })
+
+    // only set state if input different
+    if (isDifferent) {
+      this.setState({
+        exercises: updatedExercises
+      }, () => {
+        api.update(exerciseId, {
+          title: currentValue
+        }).then(() => {
+          console.log(`update exercise ${exerciseId}`, currentValue)
+          analytics.track('exerciseUpdated', {
+            category: 'exercises',
+            label: currentValue
+          })
+        }).catch((e) => {
+          console.log('An API error occurred', e)
+        })
+      })
+    }
+  }
   clearCompleted = () => {
     const { exercises } = this.state
 
@@ -340,6 +375,15 @@ export default class App extends Component {
                 // onChange={this.handleDataChange} // save on change
               />
             </div>
+            <div className='exercise-list-title'>
+              <ContentEditable
+                tagName='span'
+                editKey={id}
+                onBlur={this.updateExerciseCat} // save on enter/blur
+                html={data.cat}
+                // onChange={this.handleDataChange} // save on change
+              />
+            </div>
           </label>
           {deleteButton}
         </div>
@@ -374,6 +418,17 @@ export default class App extends Component {
               autoComplete='off'
               style={{marginRight: 20}}
             />
+            <label for="cat">Category</label>
+            <select 
+              id="cat" 
+              name="cat"
+              ref={el => this.catSelectElement = el}
+              style={{marginRight: 20}}
+              >
+              <option value="push">Push</option>
+              <option value="pull">Pull</option>
+              <option value="legs">Legs</option>
+            </select>
             <div className='exercise-actions'>
               <button className='exercise-create-button'>
                 Create exercise

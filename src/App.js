@@ -317,14 +317,15 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  renderExercises(event) {
+  renderExercises() {
     const { exercises } = this.state
     // let exerciseListCategory = 'push'
     // if(event !== undefined) {
     //   exerciseListCategory = event.target.value
 
     // }
-    const exerciseListCategory =  event.target.value
+    // const exerciseListCategory =  event.target.value
+    const exerciseListCategory = this.exerciseCatSelect.value
 
     if (!exercises || !exercises.length) {
       // Loading State here
@@ -452,11 +453,12 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.renderExercises()} 
+              onChange={this.renderExercises} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}
               defaultValue="push"
+              ref={el => this.exerciseCatSelect = el}
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>

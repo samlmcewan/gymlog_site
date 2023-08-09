@@ -12,8 +12,7 @@ import './App.css'
 export default class App extends Component {
   state = {
     exercises: [],
-    showMenu: false,
-    listCat: 'push'
+    showMenu: false
   }
   componentDidMount() {
 
@@ -319,14 +318,12 @@ export default class App extends Component {
     })
   }
   updateCategory = (e) => {
-    this.setState({
-      exercises: e.target.value
-    })
+    exercise-item
   }
   renderExercises = () => {
    
     const { exercises } = this.state
-    const exerciseListCategory = this.state
+    
 
     if (!exercises || !exercises.length) {
       // Loading State here
@@ -351,12 +348,8 @@ export default class App extends Component {
         )
       }
       // Set the display class to only show exercises from the selected category 
-      let displayClassName = "";
-      if (data.cat = exerciseListCategory) {
-          displayClassName = "exercise-item show";
-      } else {
-        displayClassName = "exercise-item hide";
-      }
+      let displayClassName = "exercise-item" + data.cat;
+     
       const boxIcon = (data.completed) ? '#exercise__box__done' : '#exercise__box'
       return (
         <div key={i} className={displayClassName}>

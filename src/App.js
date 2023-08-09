@@ -317,9 +317,9 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  renderExercises() {
+  renderExercises(event) {
     const { exercises } = this.state
-    const exerciseListCategory = this.exerciseListCategory.value
+    const exerciseListCategory = event.target.value
     if (!exercises || !exercises.length) {
       // Loading State here
       return null
@@ -449,7 +449,6 @@ export default class App extends Component {
               onChange={this.renderExercises()} 
               id="catList" 
               name="catList"
-              ref={el => this.exerciseListCategory = el}
               style={{marginRight: 20}}
               defaultValue="push"
               >

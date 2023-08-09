@@ -318,7 +318,9 @@ export default class App extends Component {
     })
   }
   updateCategory = (e) => {
+    if(e !== undefined) {
     console.log(e.target.value)
+  }
   }
   renderExercises = () => {
    

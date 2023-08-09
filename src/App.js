@@ -12,7 +12,8 @@ import './App.css'
 export default class App extends Component {
   state = {
     exercises: [],
-    showMenu: false
+    showMenu: false,
+    exerciseCategory: ''
   }
   componentDidMount() {
 
@@ -317,9 +318,11 @@ export default class App extends Component {
       category: 'modal'
     })
   }
- 
+ updateCategory = (e) => {
+  this.setState({exerciseCategory: e});
+ }
   renderExercises = () => {
-   const exerciseListCategory = this.googleInput
+   const exerciseListCategory = this.state.exerciseCategory
     const { exercises } = this.state
     
 
@@ -454,7 +457,7 @@ export default class App extends Component {
 
          
           <select
-              onChange={this.renderExercises} 
+              onChange={this.updateCategory} 
               id="catList" 
               name="catList"
               style={{marginRight: 20}}

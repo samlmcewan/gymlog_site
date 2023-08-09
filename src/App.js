@@ -449,6 +449,7 @@ export default class App extends Component {
               name="catList"
               ref={el => this.exerciseListCategory = el}
               style={{marginRight: 20}}
+              defaultValue="push"
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>

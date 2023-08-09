@@ -326,7 +326,10 @@ export default class App extends Component {
 
     // }
     // const exerciseListCategory =  event.target.value
-    const exerciseListCategory = this.exerciseCatSelect.value
+    let exerciseListCategory = ''
+    if(this.exerciseCatSelect.value !== undefined) {
+      exerciseListCategory = this.exerciseCatSelect.value
+    }
 
     if (!exercises || !exercises.length) {
       // Loading State here

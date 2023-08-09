@@ -320,7 +320,10 @@ export default class App extends Component {
   }
  updateCategory = (e) => {
   e.preventDefault()
-  this.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
+  // wipe if already seleced 
+  
+  
+  this.replaceState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
  
   
  }

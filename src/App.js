@@ -317,7 +317,8 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  renderExercises() {
+  renderExercises = (e) => {
+    e.preventDefault()
     const { exercises } = this.state
     // let exerciseListCategory = 'push'
     // if(event !== undefined) {

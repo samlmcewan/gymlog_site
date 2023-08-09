@@ -444,7 +444,9 @@ export default class App extends Component {
             </div>
           </form>
 
-          <select 
+         
+          <select
+              onChange={this.renderExercises()} 
               id="catList" 
               name="catList"
               ref={el => this.exerciseListCategory = el}

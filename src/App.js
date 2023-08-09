@@ -317,13 +317,9 @@ export default class App extends Component {
       category: 'modal'
     })
   }
-  updateCategory = (e) => {
-    if(e !== undefined) {
-    console.log(e.target.value)
-  }
-  }
+ 
   renderExercises = () => {
-   
+   const exerciseListCategory = this.googleInput._getText()
     const { exercises } = this.state
     
 
@@ -350,7 +346,16 @@ export default class App extends Component {
         )
       }
       // Set the display class to only show exercises from the selected category 
-      let displayClassName = "exercise-item" + data.cat;
+      
+      let displayClassName = ""
+
+      if(exerciseListCategory == data.cat) {
+        displayClassName = "exercise-item show"
+      } else {
+        displayClassName = "exercise-item hide"
+      }
+      
+      
      
       const boxIcon = (data.completed) ? '#exercise__box__done' : '#exercise__box'
       return (

@@ -354,7 +354,7 @@ export default class App extends Component {
       // Set the display class to only show exercises from the selected category 
       
       let displayClassName = ""
-
+      console.log(data.cat)
       if(exerciseListCategory == data.cat) {
         displayClassName = "exercise-item show"
       } else {

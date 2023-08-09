@@ -319,11 +319,12 @@ export default class App extends Component {
   }
   renderExercises(event) {
     const { exercises } = this.state
-    let exerciseListCategory = 'push'
-    if(event !== undefined) {
-      exerciseListCategory = event.target.value
+    // let exerciseListCategory = 'push'
+    // if(event !== undefined) {
+    //   exerciseListCategory = event.target.value
 
-    }
+    // }
+    const exerciseListCategory =  event.target.value
 
     if (!exercises || !exercises.length) {
       // Loading State here

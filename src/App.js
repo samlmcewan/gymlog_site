@@ -324,18 +324,40 @@ export default class App extends Component {
     })
   }
   
-//  updateCategory = (e) => {
-//   e.preventDefault()
-//   this.setState({exerciseCategory: e.target.value}, () => {console.log('state' + this.state.exerciseCategory)});
-//  }
-  renderExercises = (c) => {
-   const exerciseListCategory = c
+ updateCategory = (c) => {
+
+  const exerciseListCategory = c
    console.log('e.target.value is: ' + c)
    let selectedCat = 'push';
    if(exerciseListCategory !== undefined) {
     selectedCat = c;
    }
    console.log('selected cat is: ' + selectedCat)
+    const { exercises } = this.state
+    const exercisesByDate = exercises.sort(sortOrder)
+
+    exercisesByDate.forEach(ex => {
+      // let displayClassName = ""
+      console.log('excercise in new func: ' + ex.cat)
+      // if(selectedCat == ex.cat) {
+      //   displayClassName = "exercise-item show"
+      // } else {
+      //   displayClassName = "exercise-item hide"
+      // }
+      
+    });
+
+
+  
+ }
+  renderExercises = (c) => {
+   const exerciseListCategory = c
+  //  console.log('e.target.value is: ' + c)
+   let selectedCat = 'push';
+   if(exerciseListCategory !== undefined) {
+    selectedCat = c;
+   }
+  //  console.log('selected cat is: ' + selectedCat)
     const { exercises } = this.state
     
 
@@ -481,7 +503,7 @@ export default class App extends Component {
          
           <select
               // onChange={e => this.setSelectedCat(e.target.value)} 
-              onChange={e => this.renderExercises(e.target.value)}
+              onChange={e => this.updateCategory(e.target.value)}
               id="catList" 
               name="catList"
               style={{marginRight: 20}}

@@ -479,6 +479,12 @@ export default class App extends Component {
           </form>
 
          
+          
+
+
+          {this.renderExercises()}
+          
+
           <select
               // onChange={e => this.setSelectedCat(e.target.value)} 
               onChange={e => this.renderExercises(e.target.value)}
@@ -491,10 +497,6 @@ export default class App extends Component {
               <option value="pull">Pull</option>
               <option value="legs">Legs</option>
             </select>
-
-
-          {this.renderExercises()}
-          
           
         </div>
         <SettingsMenu

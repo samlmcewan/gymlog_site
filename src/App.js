@@ -10,6 +10,7 @@ import sortByDate from './utils/sortByDate'
 import isLocalHost from './utils/isLocalHost'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import 'material-symbols';
 import './App.css'
 
 
@@ -471,7 +472,9 @@ updateSelectedEx = (c) => {
 
         <AppHeader />
         <div class="create-exercise">
-          <h2><a href="#create" data-bs-toggle="collapse" class="btn btn-primary">Create exercise</a></h2>
+          <h2 class="create-btn"><a href="#create" data-bs-toggle="collapse">Create exercise <span class="material-symbols-outlined">
+expand_more
+</span></a></h2>
           <div id="create" class="create-form collapse">
             
               <SettingsIcon onClick={this.openModal} className='mobile-toggle' />

@@ -208,7 +208,7 @@ body {
 
 /* create exercise  */
 
-.create-button a {
+.create-btn a {
   font-size: calc(1.325rem + .9vw);
     margin-top: 0;
     margin-bottom: 0.5rem;

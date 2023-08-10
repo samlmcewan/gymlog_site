@@ -334,6 +334,9 @@ export default class App extends Component {
    }
    console.log('selected cat is: ' + selectedCat)
     const { exercises } = this.state
+    const timeStampKey = 'ts'
+    const orderBy = 'desc' // or `asc`
+    const sortOrder = sortByDate(timeStampKey, orderBy)
     const exercisesByDate = exercises.sort(sortOrder)
 
     exercisesByDate.forEach(ex => {

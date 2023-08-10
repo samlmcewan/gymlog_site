@@ -332,7 +332,7 @@ export default class App extends Component {
    const exerciseListCategory = c
    console.log('e.target.value is: ' + c)
    let selectedCat = 'push';
-   if(exerciseListCategory != undefined) {
+   if(exerciseListCategory !== undefined) {
     selectedCat = c;
    }
    console.log('selected cat is: ' + selectedCat)
@@ -479,12 +479,6 @@ export default class App extends Component {
           </form>
 
          
-          
-
-
-          {this.renderExercises()}
-          
-
           <select
               // onChange={e => this.setSelectedCat(e.target.value)} 
               onChange={e => this.renderExercises(e.target.value)}
@@ -497,6 +491,10 @@ export default class App extends Component {
               <option value="pull">Pull</option>
               <option value="legs">Legs</option>
             </select>
+
+
+          {this.renderExercises()}
+          
           
         </div>
         <SettingsMenu

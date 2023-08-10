@@ -325,9 +325,8 @@ export default class App extends Component {
   }
   
 updateSelectedEx = (c) => {
-  console.log('event target value is: '+c)
+  console.log('event target value is: ' + c)
   this.setState({selectedCategory: c})
-  console.log('this is: ' + this)
   console.log('this.state.selectedCategory is ' + this.state.selectedCategory)
 }
 //  updateCategory = (c) => {
@@ -360,13 +359,13 @@ updateSelectedEx = (c) => {
 
   
 //  }
-  renderExercises = (c) => {
-   const exerciseListCategory = c
+  renderExercises = () => {
+   const exerciseListCategory = this.state.selectedCategory
   //  console.log('e.target.value is: ' + c)
-   let selectedCat = 'push';
-   if(exerciseListCategory !== undefined) {
-    selectedCat = c;
-   }
+  //  let selectedCat = 'push';
+  //  if(exerciseListCategory !== undefined) {
+  //   selectedCat = c;
+  //  }
   //  console.log('selected cat is: ' + selectedCat)
     const { exercises } = this.state
     
@@ -396,8 +395,8 @@ updateSelectedEx = (c) => {
       // Set the display class to only show exercises from the selected category 
       
       let displayClassName = ""
-      console.log(data.cat)
-      if(selectedCat == data.cat) {
+      // console.log(data.cat)
+      if(exerciseListCategory == data.cat) {
         displayClassName = "exercise-item show"
       } else {
         displayClassName = "exercise-item hide"

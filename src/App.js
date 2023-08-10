@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Select from 'react-select'
 
 import ContentEditable from './components/ContentEditable'
 import AppHeader from './components/AppHeader'
@@ -363,6 +364,25 @@ updateSelectedEx = (c) => {
 
   
 //  }
+  renderCatSelect = () => {
+    const options = [
+      { value: 'push', label: 'Push' },
+      { value: 'pull', label: 'Pull' },
+      { value: 'legs', label: 'Legs' }
+    ]
+   
+
+    return (
+      <Select 
+        options={options}
+        className="cat-select react-select-container"
+        classNamePrefix="react-select"
+        defaultValue="push"
+        placeholder="Push"
+       />
+      ) 
+    
+  }
   renderExercises = () => {
    const exerciseListCategory = this.state.selectedCategory
   //  console.log('e.target.value is: ' + c)
@@ -540,6 +560,7 @@ updateSelectedEx = (c) => {
             </select>
          </div>
 
+         {this.renderCatSelect()}
        
          
           

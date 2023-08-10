@@ -289,5 +289,35 @@ body {
 
 
 
+/* Select category dropdown react select  */
 
+.cat-select .react-select__control {
+  background-color: var(--gray);
+}
 
+.cat-select .react-select__dropdown-indicator {
+padding-right: .5rem;
+padding-left: 0.15rem;
+}
+
+.cat-select .react-select__dropdown-indicator svg {
+  fill: cyan;
+}
+
+.cat-select .react-select__control {
+  border: 2px solid cyan;
+  width: fit-content;
+  border-radius: 34.6rem;
+}
+
+.cat-select .react-select__placeholder {
+  color: cyan;
+  font-weight: 600;
+}
+
+.cat-select .react-select__indicator-separator {
+  display: none;
+}
+.cat-select .react-select__value-container {
+  padding: 0.25rem 0 0.25rem 1rem
+}

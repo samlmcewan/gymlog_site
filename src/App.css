@@ -3,12 +3,6 @@ body {
   color: #ffffff;
 }
 
-.show {
-  display: flex;
-}
-.hide {
-  display: none;
-}
 .exercise-list {
   padding: 60px;
   padding-top: 10px;
@@ -202,4 +196,11 @@ body {
 .exercise__state:checked ~ .exercise__icon .exercise__check {
   stroke-dashoffset: 0;
   transition-delay: 0s;
+}
+
+.show {
+  display: flex;
+}
+.hide {
+  display: none;
 }

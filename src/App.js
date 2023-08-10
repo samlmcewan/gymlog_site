@@ -9,6 +9,7 @@ import api from './utils/api'
 import sortByDate from './utils/sortByDate'
 import isLocalHost from './utils/isLocalHost'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import './App.css'
 
 

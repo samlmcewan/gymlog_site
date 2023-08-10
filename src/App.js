@@ -470,12 +470,12 @@ updateSelectedEx = (c) => {
       <div className='app'>
 
         <AppHeader />
-        <a href="#create" data-bs-toggle="collapse" class="btn btn-primary">Create exercise</a>
+        <div class="create-exercise">
+          <h2><a href="#create" data-bs-toggle="collapse" class="btn btn-primary">Create exercise</a></h2>
           <div id="create" class="create-form collapse">
-            <h2>
-              Create exercise
+            
               <SettingsIcon onClick={this.openModal} className='mobile-toggle' />
-            </h2>
+            
             <form className='exercise-create-wrapper' onSubmit={this.saveExercise}>
               <input
                 className='exercise-create-input'
@@ -513,6 +513,9 @@ updateSelectedEx = (c) => {
             </form>
 
           </div>
+
+        </div>
+        
 
         <div className='exercise-list'>
           

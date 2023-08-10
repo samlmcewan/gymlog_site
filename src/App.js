@@ -324,6 +324,9 @@ export default class App extends Component {
     })
   }
   
+updateSelectedEx = (c) => {
+  console.log(c);
+}
 //  updateCategory = (c) => {
 
 //   const exerciseListCategory = c
@@ -352,11 +355,8 @@ export default class App extends Component {
       
 //     });
 
-updateSelectedEx = (c) => {
-  console.log(c);
-}
   
- }
+//  }
   renderExercises = (c) => {
    const exerciseListCategory = c
   //  console.log('e.target.value is: ' + c)

@@ -475,12 +475,13 @@ export default class App extends Component {
 
          
           <select
-              onChange={e => this.setSelectedCat(e.target.value)} 
+              // onChange={e => this.setSelectedCat(e.target.value)} 
+              onChange={e => this.renderExercises(e.target.value)}
               id="catList" 
               name="catList"
               style={{marginRight: 20}}
               defaultValue="push"
-              value={selectedCat}
+              value="push"
               >
               <option value="push">Push</option>
               <option value="pull">Pull</option>
@@ -488,7 +489,7 @@ export default class App extends Component {
             </select>
 
 
-          {this.renderExercises(selectedCat)}
+          {this.renderExercises()}
           
           
         </div>

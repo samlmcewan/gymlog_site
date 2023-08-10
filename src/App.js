@@ -471,10 +471,12 @@ updateSelectedEx = (c) => {
       <div className='app'>
 
         <AppHeader />
-        <div class="create-exercise">
-          <h2 class="create-btn"><a href="#create" data-bs-toggle="collapse">Create exercise <span class="material-symbols-outlined">
-expand_more
-</span></a></h2>
+        <div className="create-exercise p-3">
+        
+            <a className="d-flex flex-row align-items-center" href="#create" data-bs-toggle="collapse">
+              Create exercise 
+            <span className="material-symbols-outlined ps-1 pt-1">expand_more</span>
+            </a>
           <div id="create" class="create-form collapse">
             
               <SettingsIcon onClick={this.openModal} className='mobile-toggle' />

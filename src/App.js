@@ -469,45 +469,49 @@ updateSelectedEx = (c) => {
         <AppHeader />
 
         <div className='exercise-list'>
-          <h2>
-            Create exercise
-            <SettingsIcon onClick={this.openModal} className='mobile-toggle' />
-          </h2>
-          <form className='exercise-create-wrapper' onSubmit={this.saveExercise}>
-            <input
-              className='exercise-create-input'
-              placeholder='Exercise name'
-              name='name'
-              ref={el => this.inputElement = el}
-              autoComplete='off'
-              style={{marginRight: 20}}
-            />
-            <input
-              className='exercise-create-input'
-              placeholder='Weight (kg)'
-              name='weight'
-              ref={el => this.weightInputElement = el}
-              autoComplete='off'
-              style={{marginRight: 20}}
-            />
-            <label for="cat">Category</label>
-            <select 
-              id="cat" 
-              name="cat"
-              ref={el => this.catSelectElement = el}
-              style={{marginRight: 20}}
-              >
-              <option value="push">Push</option>
-              <option value="pull">Pull</option>
-              <option value="legs">Legs</option>
-            </select>
-            <div className='exercise-actions'>
-              <button className='exercise-create-button'>
-                Create exercise
-              </button>
-              <SettingsIcon onClick={this.openModal}  className='desktop-toggle' />
-            </div>
-          </form>
+          <div class="create-form">
+            <h2>
+              Create exercise
+              <SettingsIcon onClick={this.openModal} className='mobile-toggle' />
+            </h2>
+            <form className='exercise-create-wrapper' onSubmit={this.saveExercise}>
+              <input
+                className='exercise-create-input'
+                placeholder='Exercise name'
+                name='name'
+                ref={el => this.inputElement = el}
+                autoComplete='off'
+                style={{marginRight: 20}}
+              />
+              <input
+                className='exercise-create-input'
+                placeholder='Weight (kg)'
+                name='weight'
+                ref={el => this.weightInputElement = el}
+                autoComplete='off'
+                style={{marginRight: 20}}
+              />
+              <label for="cat">Category</label>
+              <select 
+                id="cat" 
+                name="cat"
+                ref={el => this.catSelectElement = el}
+                style={{marginRight: 20}}
+                >
+                <option value="push">Push</option>
+                <option value="pull">Pull</option>
+                <option value="legs">Legs</option>
+              </select>
+              <div className='exercise-actions'>
+                <button className='exercise-create-button'>
+                  Create exercise
+                </button>
+                <SettingsIcon onClick={this.openModal}  className='desktop-toggle' />
+              </div>
+            </form>
+
+          </div>
+          
 
          
           <select

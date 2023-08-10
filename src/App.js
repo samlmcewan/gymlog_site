@@ -14,8 +14,7 @@ export default class App extends Component {
   
   state = {
     exercises: [],
-    showMenu: false,
-    exerciseCategory: ''
+    showMenu: false
     
   }
   
@@ -424,9 +423,9 @@ export default class App extends Component {
     })
  
   }
-  resetState = () => {
-    {this.setState({exerciseCategory: ''})}
-  }
+  // resetState = () => {
+  //   {this.setState({exerciseCategory: ''})}
+  // }
   // setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
   render() {
     // const [selectedCat, setSelectedCat] = useState('')

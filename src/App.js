@@ -341,8 +341,8 @@ export default class App extends Component {
 
     exercisesByDate.forEach(ex => {
       // let displayClassName = ""
-      console.log('excercise cat in new func: ' + ex)
-      console.log('excercise cat in new func: ' + ex.cat)
+      // console.log('excercise cat in new func: ' + ex.d)
+      console.log('excercise cat in new func: ' + ex.data.cat)
       // if(selectedCat == ex.cat) {
       //   displayClassName = "exercise-item show"
       // } else {

@@ -331,6 +331,7 @@ export default class App extends Component {
 //  }
   renderExercises = (c) => {
    const exerciseListCategory = c
+   console.log('e.target.value is: ' + c)
     const { exercises } = this.state
     
 

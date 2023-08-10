@@ -208,7 +208,7 @@ body {
 
 /* create exercise  */
 
-.create-btn a {
+.create-exercise a {
   font-size: calc(1.325rem + .9vw);
     margin-top: 0;
     margin-bottom: 0.5rem;
@@ -225,7 +225,7 @@ body {
 
 } */
 
-.create-btn a[aria-expanded="false"]:after {
+.create-exercise a[aria-expanded="false"]:after {
   content: '\e5cc';
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-family: 'Material Symbols Outlined';

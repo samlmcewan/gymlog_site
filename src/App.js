@@ -473,7 +473,7 @@ updateSelectedEx = (c) => {
         <AppHeader />
         <div className="create-exercise p-3">
         
-            <a className="d-flex flex-row align-items-center" href="#create" data-bs-toggle="collapse">
+            <a className="create-btn d-flex flex-row align-items-center" href="#create" data-bs-toggle="collapse">
               Create exercise 
             {/* <span className="material-symbols-outlined ps-1 pt-1">expand_more</span> */}
             </a>

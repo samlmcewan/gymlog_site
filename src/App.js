@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { useState } from "react";
+
 import ContentEditable from './components/ContentEditable'
 import AppHeader from './components/AppHeader'
 import SettingsMenu from './components/SettingsMenu'
@@ -14,8 +14,8 @@ export default class App extends Component {
   
   state = {
     exercises: [],
-    showMenu: false
-    
+    showMenu: false,
+    selectedCategory: 'push'
   }
   
   
@@ -324,34 +324,37 @@ export default class App extends Component {
     })
   }
   
- updateCategory = (c) => {
+//  updateCategory = (c) => {
 
-  const exerciseListCategory = c
-   console.log('e.target.value is: ' + c)
-   let selectedCat = 'push';
-   if(exerciseListCategory !== undefined) {
-    selectedCat = c;
-   }
-   console.log('selected cat is: ' + selectedCat)
-    const { exercises } = this.state
-    const timeStampKey = 'ts'
-    const orderBy = 'desc' // or `asc`
-    const sortOrder = sortByDate(timeStampKey, orderBy)
-    const exercisesByDate = exercises.sort(sortOrder)
+//   const exerciseListCategory = c
+//    console.log('e.target.value is: ' + c)
+//    let selectedCat = 'push';
+//    if(exerciseListCategory !== undefined) {
+//     selectedCat = c;
+//    }
+//    console.log('selected cat is: ' + selectedCat)
+//     const { exercises } = this.state
+//     const timeStampKey = 'ts'
+//     const orderBy = 'desc' // or `asc`
+//     const sortOrder = sortByDate(timeStampKey, orderBy)
+//     const exercisesByDate = exercises.sort(sortOrder)
 
-    exercisesByDate.forEach(ex => {
-      // let displayClassName = ""
-      // console.log('excercise cat in new func: ' + ex.d)
-      console.log('excercise cat in new func: ' + ex.data.cat)
-      // if(selectedCat == ex.cat) {
-      //   displayClassName = "exercise-item show"
-      // } else {
-      //   displayClassName = "exercise-item hide"
-      // }
+//     exercisesByDate.forEach(ex => {
+//       console.log('excercise cat in new func: ' + ex.data.cat)
+//       // let displayClassName = ""
+//       // console.log('excercise cat in new func: ' + ex.d)
+     
+//       // if(selectedCat == ex.cat) {
+//       //   displayClassName = "exercise-item show"
+//       // } else {
+//       //   displayClassName = "exercise-item hide"
+//       // }
       
-    });
+//     });
 
-
+updateSelectedEx = (c) => {
+  console.log(c);
+}
   
  }
   renderExercises = (c) => {

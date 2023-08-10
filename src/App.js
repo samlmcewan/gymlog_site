@@ -325,7 +325,10 @@ export default class App extends Component {
   }
   
 updateSelectedEx = (c) => {
-  console.log(c);
+  console.log('event target value is: '+c)
+  this.setState({selectedCategory: c})
+  console.log('this is: ' + this)
+  console.log('this.state.selectedCategory is ' + this.state.selectedCategory)
 }
 //  updateCategory = (c) => {
 
@@ -510,7 +513,7 @@ updateSelectedEx = (c) => {
          
           <select
               // onChange={e => this.setSelectedCat(e.target.value)} 
-              onChange={e => this.updateCategory(e.target.value)}
+              onChange={e => this.updateSelectedEx(e.target.value)}
               id="catList" 
               name="catList"
               style={{marginRight: 20}}

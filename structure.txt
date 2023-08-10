@@ -36,3 +36,17 @@ workout type select (tags, showOnWorkoutPage = true)
                         oneRepPR: 16kg, 
                         showOnWorkoutPage: true
                     }
+
+
+
+
+
+                    <style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+</style>

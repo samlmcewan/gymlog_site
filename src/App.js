@@ -477,7 +477,7 @@ updateSelectedEx = (c) => {
               Create exercise 
             {/* <span className="material-symbols-outlined ps-1 pt-1">expand_more</span> */}
             </a>
-          <div id="create" class="create-form collapse">
+          <div id="create" className="create-form collapse">
             
               <SettingsIcon onClick={this.openModal} className='mobile-toggle' />
             
@@ -526,20 +526,23 @@ updateSelectedEx = (c) => {
           
           
 
-         
-          <select
-              // onChange={e => this.setSelectedCat(e.target.value)} 
+         <div className="select-cat px-1">
+         <select
+              className="px-2 me-1 py-2"
               onChange={e => this.updateSelectedEx(e.target.value)}
               id="catList" 
               name="catList"
-              style={{marginRight: 20}}
               defaultValue="push"
               >
-              <option value="push">Push</option>
-              <option value="pull">Pull</option>
-              <option value="legs">Legs</option>
+              <option className="select-option" value="push">Push</option>
+              <option className="select-option" value="pull">Pull</option>
+              <option className="select-option" value="legs">Legs</option>
             </select>
+         </div>
 
+       
+         
+          
 
           {this.renderExercises()}
           

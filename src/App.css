@@ -1,5 +1,11 @@
+:root {
+
+  --gray: #353a3e;
+
+}
+
 body {
-  background-color: #353a3e;
+  background-color: var(--gray);
   color: #ffffff;
 }
 
@@ -226,7 +232,62 @@ body {
 } */
 
 .create-exercise a[aria-expanded="false"]:after {
-  content: '\e5cc';
+  content: '\e5cf';
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-family: 'Material Symbols Outlined';
+  padding-top: 0.25rem;
 }
+.create-exercise a[aria-expanded="true"]:after {
+  content: '\e5ce';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-family: 'Material Symbols Outlined';
+  padding-top: 0.25rem;
+}
+
+.select-cat {
+  border: 2px solid cyan;
+  border-radius: 34.6rem;
+  background-color: #353a3e;
+  background-color: var(--gray);
+  width: fit-content;
+}
+.select-cat select {
+  /* appearance: none; */
+  /* display: none; */
+ 
+  
+  background-color: transparent;
+  font-size: 1rem;
+  color: cyan;
+  font-weight: 600;
+  border: none;
+
+
+
+  /* margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat; */
+
+}
+
+
+
+
+
+

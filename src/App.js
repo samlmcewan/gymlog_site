@@ -332,6 +332,11 @@ export default class App extends Component {
   renderExercises = (c) => {
    const exerciseListCategory = c
    console.log('e.target.value is: ' + c)
+   const selectedCat = 'push';
+   if(exerciseListCategory != undefined) {
+    selectedCat = c;
+   }
+   console.log('selected cat is: ' + selectedCat)
     const { exercises } = this.state
     
 
@@ -361,7 +366,7 @@ export default class App extends Component {
       
       let displayClassName = ""
       console.log(data.cat)
-      if(exerciseListCategory == data.cat) {
+      if(selectedCat == data.cat) {
         displayClassName = "exercise-item show"
       } else {
         displayClassName = "exercise-item hide"
@@ -422,11 +427,11 @@ export default class App extends Component {
   resetState = () => {
     {this.setState({exerciseCategory: ''})}
   }
-  setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
+  // setSelectedCat = (v) => this.setState({exerciseCategory: v}) 
   render() {
     // const [selectedCat, setSelectedCat] = useState('')
     // const [selectedCat, setSelectedCat] = () => { useState('')}
-    const selectedCat = this.state.exerciseCategory
+    // const selectedCat = this.state.exerciseCategory
     
     return (
       <div className='app'>

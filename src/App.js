@@ -470,9 +470,7 @@ updateSelectedEx = (c) => {
       <div className='app'>
 
         <AppHeader />
-
-        <div className='exercise-list'>
-          <a href="#create" data-bs-toggle="collapse" class="btn btn-primary">Create exercise</a>
+        <a href="#create" data-bs-toggle="collapse" class="btn btn-primary">Create exercise</a>
           <div id="create" class="create-form collapse">
             <h2>
               Create exercise
@@ -515,6 +513,9 @@ updateSelectedEx = (c) => {
             </form>
 
           </div>
+
+        <div className='exercise-list'>
+          
           
 
          

@@ -475,7 +475,7 @@ updateSelectedEx = (c) => {
         
             <a className="d-flex flex-row align-items-center" href="#create" data-bs-toggle="collapse">
               Create exercise 
-            <span className="material-symbols-outlined ps-1 pt-1">expand_more</span>
+            {/* <span className="material-symbols-outlined ps-1 pt-1">expand_more</span> */}
             </a>
           <div id="create" class="create-form collapse">
             
